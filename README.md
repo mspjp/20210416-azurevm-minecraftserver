@@ -29,6 +29,7 @@ Azure Virtual Machines で Ubuntu の仮想マシンをデプロイし、 Minecr
 |地域|(Asia Pacific)東日本|
 |可用性オプション|インフラストラクチャ冗長は必要ありません|
 |イメージ|Ubuntu Server 18.04 LTS - Gen1|
+|Azure スポット インスタンス|なし|
 |サイズ|Standard_B1ms|
 |認証の種類|SSH 公開キー|
 |ユーザ名|mstechcamp|
@@ -105,6 +106,7 @@ Azure Virtual Machines で Ubuntu の仮想マシンをデプロイし、 Minecr
 設定が完了したら **追加** をクリックします。
 
 </br>
+
 1-17 左側の項目から **概要** をクリックします。
 
 1-18 **開始** をクリックして仮想マシンを起動します。
