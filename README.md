@@ -225,54 +225,26 @@ mkdir MinecraftServer; cd MinecraftServer
 sudo curl -LO https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar
 ```
 
-3-7 Minecraft Server 起動ファイルを作成します。
+3-7 Minecraft Server 起動ファイルを作成します。</br>
+起動ファイルにはサーバを起動するためのコマンド `java -Xmx1G -Xms1G -jar server.jar` を書き込みます。
 
 ```
-sudo vim start.sh
+echo java -Xmx1G -Xms1G -jar server.jar > start.sh
 ```
 
-今回は Vim というエディタを使用します。初めて使用する方は下記を参考にしてください。
-
-<details><summary>Vim の使い方</summary>
-<div>
-
-vim でファイルを開くと、このような表示になります。</br>
-
-![](Images/vim01.png)
-
-ここで、キーボードの i キーを押すと挿入モードになります。挿入モードのときは左下に INSERT と表示されます。</br>
-
-![](Images/vim02.png)
-
-この状態で文字の入力を行うことができます。入力が終わったら、キーボードの ESC キーを押すと挿入モードが解除されます。
-
-この状態で `:wq` と入力してエンターキーを押すと Vim が終了します。
-
-![](Images/vim03.png)
-
-</div>
-</details>
-</br>
-
-3-8 以下の内容を `start.sh` にコピー＆ペーストし、保存して Vim を終了します。
+3-8 `start.sh` にファイル実行権限を付与します。
 
 ```
-java -Xmx1G -Xms1G -jar server.jar
+sudo chmod u+x start.sh
 ```
 
-3-9 ファイル実行権限を付与します。
-
-```
-sudo chmod o+x start.sh
-```
-
-3-10 Minecraft Server を起動します。
+3-9 Minecraft Server を起動します。
 
 ```
 ./start.sh
 ```
 
-3-11 下記のようなエラーが表示されることを確認します。</br>
+3-10 下記のようなエラーが表示されることを確認します。</br>
 初回起動ではエラーが表示されます。これは利用規約 (eula) への同意が必要なためです。
 
 ```
@@ -281,23 +253,15 @@ sudo chmod o+x start.sh
 [main/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
 ```
 
-3-12 Vim にて eula.txt を開きます。
+3-11 利用規約内容 `eula=false` を `eula=true` に変更します。</br>
 
 ```
-sudo vim eula.txt
+echo eula=true > eula.txt
 ```
 
-3-13 `eula=false` を `eula=true` に変更して保存し、Vim を終了します。</br>
-デフォルトでは下記のようになっています。もし、何も書かれていない場合は別のファイルを開いている可能性があります。
-```
-#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
-#Thu Apr 08 07:18:33 UTC 2021
-eula=false
-```
+3-12 再度、Minecraft Server を起動します。
 
-3-14 再度、Minecraft Server を起動します。
-
-3-15 しばらくすると、`Done` と表示されます。これが表示されれば Minecraft Server の設定は完了です！
+3-13 しばらくすると、`Done` と表示されます。これが表示されれば Minecraft Server の設定は完了です！
 
 ```
 [Server thread/INFO]: Done (76.500s)! For help, type "help"
